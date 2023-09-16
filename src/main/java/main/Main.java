@@ -44,23 +44,23 @@ public class Main {
         while (tests != 0) {
 
             for (int i = 0; i < tests; i++) {
-                String nomeStudent = sc.nextLine();
-                String infoStudent = sc.nextLine();
+                String studentName = sc.nextLine();
+                String studentInfo = sc.nextLine();
 
                 Student student = new Student();
-                student.setName(nomeStudent);
-                student.setTshirtColor(infoStudent.split(" ")[0]);
-                student.setTshirtSize(infoStudent.split(" ")[1]);
+                student.setName(studentName);
+                student.setTshirtColor(studentInfo.split(" ")[0]);
+                student.setTshirtSize(studentInfo.split(" ")[1]);
 
                 students.add(student);
             }
 
-            List<Student> sortedStudents = students.stream()
+            List<Student> studentsSorted = students.stream()
                     .sorted(Comparator.comparing(Student::getTshirtColor).thenComparing(Student::getTshirtSize).reversed().thenComparing(Student::getName))
                     .sorted(Comparator.comparing(Student::getTshirtColor))
                     .collect(Collectors.toList());
 
-            sortedStudents.forEach(student ->
+            studentsSorted.forEach(student ->
                     System.out.println(student.getTshirtColor() + " " + student.getTshirtSize() + " " + student.getName()));
 
             students.clear();
