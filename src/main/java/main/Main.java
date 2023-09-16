@@ -5,8 +5,8 @@ import java.util.stream.Collectors;
 
 class Student {
     private String name;
-    private String colorTshirt;
-    private String sizeTshirt;
+    private String tshirtColor;
+    private String tshirtSize;
 
     public String getName() {
         return name;
@@ -16,20 +16,20 @@ class Student {
         this.name = name;
     }
 
-    public String getColorTshirt() {
-        return colorTshirt;
+    public String getTshirtColor() {
+        return tshirtColor;
     }
 
-    public void setColorTshirt(String colorTshirt) {
-        this.colorTshirt = colorTshirt;
+    public void setTshirtColor(String tshirtColor) {
+        this.tshirtColor = tshirtColor;
     }
 
-    public String getSizeTshirt() {
-        return sizeTshirt;
+    public String getTshirtSize() {
+        return tshirtSize;
     }
 
-    public void setSizeTshirt(String sizeTshirt) {
-        this.sizeTshirt = sizeTshirt;
+    public void setTshirtSize(String tshirtSize) {
+        this.tshirtSize = tshirtSize;
     }
 }
 
@@ -49,19 +49,19 @@ public class Main {
 
                 Student student = new Student();
                 student.setName(nomeStudent);
-                student.setColorTshirt(infoStudent.split(" ")[0]);
-                student.setSizeTshirt(infoStudent.split(" ")[1]);
+                student.setTshirtColor(infoStudent.split(" ")[0]);
+                student.setTshirtSize(infoStudent.split(" ")[1]);
 
                 students.add(student);
             }
 
             List<Student> sortedStudents = students.stream()
-                    .sorted(Comparator.comparing(Student::getColorTshirt).thenComparing(Student::getSizeTshirt).reversed().thenComparing(Student::getName))
-                    .sorted(Comparator.comparing(Student::getColorTshirt))
+                    .sorted(Comparator.comparing(Student::getTshirtColor).thenComparing(Student::getTshirtSize).reversed().thenComparing(Student::getName))
+                    .sorted(Comparator.comparing(Student::getTshirtColor))
                     .collect(Collectors.toList());
 
             sortedStudents.forEach(student ->
-                    System.out.println(student.getColorTshirt() + " " + student.getSizeTshirt() + " " + student.getName()));
+                    System.out.println(student.getTshirtColor() + " " + student.getTshirtSize() + " " + student.getName()));
 
             students.clear();
             tests = Integer.parseInt(sc.nextLine());
